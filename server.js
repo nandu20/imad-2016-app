@@ -9,7 +9,8 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 app.get('/About', function (req, res) {
-  res.send('About will be served here');
+     res.sendFile(path.join(__dirname, 'ui', 'About.html'));
+
 });
 app.get('/Contact', function (req, res) {
   res.send('Contact will be served here');

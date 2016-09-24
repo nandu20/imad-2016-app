@@ -38,14 +38,9 @@ var article={
     heading:"Article Three",
     date:"Sep 20,2016",
     content:`<p>
-            This is the content for my second article. 
-        </p> `},
-    articleThree:{title :"Article Three | Nandakumar",
-    heading:"Article Three",
-    date:"Sep 20,2016",
-    content:`<p>
             This is the content for my third article. 
         </p> `},
+    
 };
 
 

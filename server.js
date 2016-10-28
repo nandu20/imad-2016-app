@@ -64,7 +64,7 @@ var htmlTemplate = `<html>
     <body>
     <div class = "container">
         <div>
-        <a href="/">Home</a>
+        <a href="/">Article-two</a>
         </div>
     <hr/>
     <h3>

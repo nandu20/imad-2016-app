@@ -16,15 +16,15 @@ app.get('/counter',function(req,res){
 });    
 
 
-app.get('/Article-One', function (req, res) {
+app.get('/article-One', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 
 });
-app.get('/Article-two', function (req, res) {
+app.get('/article-two', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
 
 });
-app.get('/Article-three', function (req, res) {
+app.get('/article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 
 });

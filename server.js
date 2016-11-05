@@ -28,6 +28,37 @@ app.get('/article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 
 });
+var names = [];
+app.get('/submit-name', function(req, res) { // /submit-name?name=xxxx
+  // Get the name from the request
+var name = req.query.name;
+names.push(name);
+// JSON: Javascript Object Notation
+res.send(JSON.stringify(names));
+}); 
+
+var comments=[];
+app.get('/submit-comment',function(req,res){
+//to get the comments
+var comment=req.query.comment;
+comments.push(comment);
+//console.log('comments is: ',comment);
+ res.send(JSON.stringify(comments));
+
+//to render those comments on the page
+});
+
+
+var comments=[];
+app.get('/article-comment',function(req,res){
+//to get the comments
+var comment=req.query.comment;
+comments.push(comment);
+//console.log('comments is: ',comment);
+ res.send(JSON.stringify(comments));
+
+//to render those comments on the page
+});
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });

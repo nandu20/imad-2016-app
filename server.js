@@ -40,9 +40,15 @@ app.get('/text-db', function (req, res) {
 });
 
 });
+        
+app.get('/articleName', function (req, res) {
+   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+
+ var articleName = req.parans.articleName;
+ res.send(createTemplate(articles[articleName]));
+});
     
-    
-app.get('/article-one', function (req, res) {
+//app.get('/article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 
 });
@@ -53,7 +59,7 @@ app.get('/article-two', function (req, res) {
 app.get('/article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 
-});
+});//
 app.get('/ui/git.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'git.png'));
 });

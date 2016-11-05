@@ -27,32 +27,13 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-var pool = new Pool(config);
-
-        
-app.get('/article/:articleName', function (req, res) {
-    pool.query('SELECT * FROM article WHERE title=' + req.parans.articleName, function (err,result){
-         res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
-     if(err){
-            res.status(500).send(err.toString());
-        
-       } else{
-           if(results.rows.length === 0){
-             res.status(404).send("article not found");
-           }else{
-               var articleData = result.rows[0];
-           }
-          
-         res.send(createTemplate(articles[articleName]));
-   });
-});
 
     
-app.get('/article/:article-one', function (req, res) {
+app.get('/article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 
 });
-app.get('/artcle/:article-two', function (req, res) {
+app.get('/article-two', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
 
 });
@@ -82,8 +63,7 @@ app.get('/counter',function(req,res){
 
 
 
-//to render those comments on the page
-});
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });

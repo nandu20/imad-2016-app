@@ -34,7 +34,7 @@ app.get('/text-db', function (req, res) {
             res.status(500).send(err.toString());
         }
         else{
-            req.send(JSON.stringify(result));
+            req.send(JSON.stringify(result.row));
         }
     
 });

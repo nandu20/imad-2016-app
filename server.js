@@ -7,7 +7,7 @@ var config = {
     database:"nandu20",
     host:"db.imad.hasura-app.io",
     port:'5432',
-    password:process.envDB_PASSWORD
+    password:process.env.DB_PASSWORD
 };
 
 var app = express();

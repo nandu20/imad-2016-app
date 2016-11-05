@@ -83,7 +83,7 @@ var request = new XMLHttpRequest();
   
    var comment=document.getElementById('comment');
    var txt =comment.value;
-    request.open('GET', 'http://sekarvaradha.imad.hasura-app.io/submit-comment?comment=' +txt, true);
+    request.open('GET', 'http://nandu20.imad.hasura-app.io/submit-comment?comment=' +txt, true);
     request.send(null); 
 }; 
 }

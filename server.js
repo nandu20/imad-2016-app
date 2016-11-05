@@ -28,25 +28,25 @@ app.get('/', function (req, res) {
 });
 
 var pool = new Pool(config);
-app.get('/text-db', function (req, res) {
-    pool.query('SELECT * FROM text', function (err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else{
-            req.send(JSON.stringify(result.row));
-        }
-    
-});
 
-});
         
-app.get('/articleName', function (req, res) {
-   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
-
- var articleName = req.parans.articleName;
- res.send(createTemplate(articles[articleName]));
+app.get('/article/;articleName', function (req, res) {
+    pool.query('SELECT * FROM article WHERE title=' + req.parans.articleName, function (err,result){
+         res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+     if(err){
+            res.status(500).send(err.toString());
+        
+       } else{
+           if(results.rows.length === 0){
+             res.status(404).send("article not found");
+           }else{
+               var articleData = result.rows[0];
+           }
+          
+         res.send(createTemplate(articles[articleName]));
+   });
 });
+
     
 app.get('/article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));

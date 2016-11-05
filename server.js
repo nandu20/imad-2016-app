@@ -42,6 +42,18 @@ function hash(input,salt) {
     
 });
 
+app.get('/create-user',function(req,res){
+    var salt = crypto.getRandomBytes(128).tostring('hex');
+    var dbstring =  hash(password,salt);
+    pool.query('INSERT INTO " user" (username,password) VALUES ($1,$2)',[username,dostring],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+         res.send("user successfully created "+ username );
+        }
+    });
+    
+});
     
 app.get('/article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));

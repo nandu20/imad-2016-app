@@ -30,7 +30,7 @@ app.get('/', function (req, res) {
 var pool = new Pool(config);
 
         
-app.get('/article/;articleName', function (req, res) {
+app.get('/article/:articleName', function (req, res) {
     pool.query('SELECT * FROM article WHERE title=' + req.parans.articleName, function (err,result){
          res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
      if(err){
@@ -48,15 +48,15 @@ app.get('/article/;articleName', function (req, res) {
 });
 
     
-app.get('/article-one', function (req, res) {
+app.get('/article/:article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 
 });
-app.get('/article-two', function (req, res) {
+app.get('/artcle/:article-two', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
 
 });
-app.get('/article-three', function (req, res) {
+app.get('/article/:article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 
 });//
@@ -79,34 +79,8 @@ app.get('/counter',function(req,res){
     counter=counter+1;
     res.send(counter.toString());
 }); 
-var names = [];
-app.get('/submit-name', function(req, res) { // /submit-name?name=xxxx
-  // Get the name from the request
-var name = req.query.name;
-names.push(name);
-// JSON: Javascript Object Notation
-res.send(JSON.stringify(names));
-}); 
-
-var comments=[];
-app.get('/submit-comment',function(req,res){
-//to get the comments
-var comment=req.query.comment;
-comments.push(comment);
-//console.log('comments is: ',comment);
- res.send(JSON.stringify(comments));
-
-//to render those comments on the page
-});
 
 
-var comments=[];
-app.get('/article-comment',function(req,res){
-//to get the comments
-var comment=req.query.comment;
-comments.push(comment);
-//console.log('comments is: ',comment);
- res.send(JSON.stringify(comments));
 
 //to render those comments on the page
 });

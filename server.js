@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
-var bodyParser = require("bodyParser");
+
 var config = {
     user:"nandu20",
     database:"nandu20",
@@ -24,7 +24,7 @@ app.get('/counter',function(req,res){
     counter=counter+1;
     res.send(counter.toString());
 }); 
-function createTemplate (data) {""}
+//function createTemplate (data) {""}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -56,7 +56,7 @@ app.post('/create-user',function(req,res){
         }
     });
     
-});
+});//
     
 app.get('/article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));

@@ -161,7 +161,7 @@ return false;
 }  
 else  
 {  
-alert('Form Succesfully Submitted');  
+alert('login successful');  
 window.location.reload()  
 return true;  
 }  

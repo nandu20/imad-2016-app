@@ -33,7 +33,7 @@ app.get('/counter',function(req,res){
     res.send(counter.toString());
 }); 
 //function createTemplate (data) {""}
-app.get('/article-one', function (req, res) {
+app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 
 });

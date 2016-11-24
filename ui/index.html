@@ -14,9 +14,7 @@ ul {
     background-color: #333;
 }
 
-li {
-    float: left;
-}
+
 
 li a {
     display: block;
@@ -34,7 +32,7 @@ li a:hover {
 
 
 <ul>
-  <li><a  href="">Home</a></li>
+  <li float :left><a  href="">Home</a></li>
   <li><a href="article-one">Article-one</a></li>
   <li><a href="article-two">Article-Two</a></li>
   <li><a href="article-three">Article-Three</a></li>
@@ -118,8 +116,7 @@ style="border:1px solid lightgrey;padding:5px; color:blue">
 <p><b>Use tab keys to move from one input field to the next.</b></p>  
 <form name='registration' onSubmit="return formValidation();">  
 <ul>  
-<li><label for="userid">User id:</label></li> 
-
+<li><label for="userid"><b>User id: </b></label></li> 
 
 <li><input type="text" name="userid" size="12" /></li> 
 <li><label for="passid"><b>Password:</b></label></li>  

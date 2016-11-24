@@ -15,7 +15,57 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+    title:'Article One | Nandakumar ',
+    heading:'Article One',
+    date:'Sep 5,2016 ',
+    content:`
+    <p>
+                This is the content of my First Article
+            </p>
+              <p>
+                This is the content of my First Article
+            </p>
+              <p>
+                This is the content of my First Article
+            </p>`
+    
+    
+};
+function createTemplate (data){
+    var title = data.title
+    var heading = data.heading
+    var date = data.date
+    var content = data.content;
 
+var htmlTemplate = `
+<html>
+    <head>
+     <title>
+        ${title}
+     </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>
+            <a href ='\'> Home</a>
+        </div>
+        <hr/>
+        <h3>
+          ${heading}
+        </h3>
+        <div>
+           ${date}
+        </div>
+        <div>
+        ${content}
+        </div>
+            </body>
+</html>
+`;
+return htmlTemplate;
+
+}
 var counter = 0;
 app.get('/counter',function(req,res){
     counter=counter+1;
@@ -23,7 +73,7 @@ app.get('/counter',function(req,res){
 }); 
 //function createTemplate (data) {""}
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send(createTemplate(articleOne));
 });
 
 

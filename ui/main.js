@@ -52,38 +52,3 @@ submit.onclick = function() {
  
 } 
 // making comments
- 
-var submit=document.getElementById("comment-btn");
-if (submit !==undefined) {
-submit.onclick = function(){
-
-var request = new XMLHttpRequest();
-    //create a request
- request.onreadystatechange= function(){
- if (request.readyState === XMLHttpRequest.DONE)
-  {
-      // take some action
-    if (request.status===200)
-       { 
-        var comments =request.responseText;
-        var comnts= JSON.parse(comments);
-        var comlist='';
-        for (var i=0;i<comnts.length;i++)
-         {
-          //comlist += '<li>' + comnts[i] + '</li>';
-           comlist += comnts[i] + '<br>';
-           var p =document.getElementById("show-comment");
-           p.innerHTML= comlist;
-          }
-        }
-  }
-};
-
-   // make the request
-  
-   var comment=document.getElementById('comment');
-   var txt =comment.value;
-    request.open('GET', 'http://nandu20.imad.hasura-app.io/submit-comment?comment=' +txt, true);
-    request.send(null); 
-}; 
-}

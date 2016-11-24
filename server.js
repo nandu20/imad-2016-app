@@ -149,7 +149,12 @@ app.get('/counter',function(req,res){
     res.send(counter.toString());
 }); 
 
-
+app.get('/submit-name',function(req,res){
+    
+    var name =res.params.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
 
 
 app.get('/ui/main.js', function (req, res) {

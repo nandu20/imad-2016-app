@@ -18,7 +18,7 @@ button.onclick =function(){
 };
 var nameInput=document.getElementById('name');
   var name1=nameInput.value;
-var submit =document.getElementById('submit-btn');
+var submit =document.getElementById('submit_btn');
 
 submit.onclick = function() {
       
@@ -27,8 +27,8 @@ submit.onclick = function() {
        var list= '';
         for (var i=0;i<names.length;i++)
         {
-          // list += '<li>' + names[i] + '</li>';
-            list +=  names[i] +'<br>';
+          list += '<li>' + names[i] + '</li>';
+           // list +=  names[i] +'<br>';
          }
 	    var ul= document.getElementById('namelist');
         ul.innerHTML = list;

@@ -224,3 +224,4 @@ var name = nameInput.value;
     
     request.open('GET', '/get-comments/' + article-one, true);
     request.send(null);
+    };

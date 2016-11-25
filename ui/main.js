@@ -167,4 +167,11 @@ return true;
 }  
 }  
 
+//submit name
+var nameInput = document.getElementById('name');
+var name = varInput.value;
+var submit = document.getElementById('submit_btn');
+submit.onclick = function () {
+    
+};
 

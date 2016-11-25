@@ -1,84 +1,85 @@
-var attempt = 3; // Variable to count number of attempts.
-// Below function Executes on click of login button.
-function validate(){
-var username = document.getElementById("username").value;
-var password = document.getElementById("password").value;
-if ( username == "Formget" && password == "formget#123"){
-alert ("Login successfully");
-window.location = "success.html"; // Redirecting to other page.
-return false;
-}
-else{
-attempt --;// Decrementing by one.
-alert("You have left "+attempt+" attempt;");
-// Disabling fields after 3 attempts.
-if( attempt === 0){
-document.getElementById("username").disabled = true;
-document.getElementById("password").disabled = true;
-document.getElementById("submit").disabled = true;
-return false;
-}
-}
-}
-function submit_by_id() {
-var name = document.getElementById("name").value;
-var email = document.getElementById("email").value;
-if (validation()) // Calling validation function
-{
-document.getElementById("form_id").submit(); //form submission
-alert(" Name : " + name + " \n Email : " + email + " \n Form Id : " + document.getElementById("form_id").getAttribute("id") + "\n\n Form Submitted Successfully......");
-}
+var currentArticleTitle = window.location.pathname.split('/')[2];
+
+function loadCommentForm () {
+    var commentFormHtml = `
+        <h5>Submit a comment</h5>
+        <textarea id="comment_text" rows="5" cols="100" placeholder="Enter your comment here..."></textarea>
+        <br/>
+        <input type="submit" id="submit" value="Submit" />
+        <br/>
+        `;
+    document.getElementById('comment_form').innerHTML = commentFormHtml;
+    
+    // Submit username/password to login
+    var submit = document.getElementById('submit');
+    submit.onclick = function () {
+        // Create a request object
+        var request = new XMLHttpRequest();
+        
+        // Capture the response and store it in a variable
+        request.onreadystatechange = function () {
+          if (request.readyState === XMLHttpRequest.DONE) {
+                // Take some action
+                if (request.status === 200) {
+                    // clear the form & reload all the comments
+                    document.getElementById('comment_text').value = '';
+                    loadComments();    
+                } else {
+                    alert('Error! Could not submit comment');
+                }
+                submit.value = 'Submit';
+          }
+        };
+        
+        // Make the request
+        var comment = document.getElementById('comment_text').value;
+        request.open('POST', '/submit-comment/' + currentArticleTitle, true);
+        request.setRequestHeader('Content-Type', 'application/json');
+        request.send(JSON.stringify({comment: comment}));  
+        submit.value = 'Submitting...';
+        
+    };
 }
 
-// Submit form with name function.
-function submit_by_name() {
-var name = document.getElementById("name").value;
-var email = document.getElementById("email").value;
-if (validation()) // Calling validation function
+
+function escapeHTML (text)
 {
-var x = document.getElementsByName('form_name');
-x[0].submit(); //form submission
-alert(" Name : " + name + " \n Email : " + email + " \n Form Name : " + document.getElementById("form_id").getAttribute("name") + "\n\n Form Submitted Successfully......");
-}
+    var $text = document.createTextNode(text);
+    var $div = document.createElement('div');
+    $div.appendChild($text);
+    return $div.innerHTML;
 }
 
-// Submit form with class function.
-function submit_by_class() {
-var name = document.getElementById("name").value;
-var email = document.getElementById("email").value;
-if (validation()) // Calling validation function
-{
-var x = document.getElementsByClassName("form_class");
-x[0].submit(); //form submission
-alert(" Name : " + name + " \n Email : " + email + " \n Form Class : " + document.getElementById("form_id").getAttribute("class") + "\n\n Form Submitted Successfully......");
-}
+function loadComments () {
+        // Check if the user is already logged in
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function () {
+        if (request.readyState === XMLHttpRequest.DONE) {
+            var comments = document.getElementById('comments');
+            if (request.status === 200) {
+                var content = '';
+                var commentsData = JSON.parse(this.responseText);
+                for (var i=0; i< commentsData.length; i++) {
+                    var time = new Date(commentsData[i].timestamp);
+                    content += `<div class="comment">
+                        <p>${escapeHTML(commentsData[i].comment)}</p>
+                        <div class="commenter">
+                            ${commentsData[i].username} - ${time.toLocaleTimeString()} on ${time.toLocaleDateString()} 
+                        </div>
+                    </div>`;
+                }
+                comments.innerHTML = content;
+            } else {
+                comments.innerHTML('Oops! Could not load comments!');
+            }
+        }
+    };
+    
+    request.open('GET', '/get-comments/' + currentArticleTitle, true);
+    request.send(null);
 }
 
-// Submit form with HTML <form> tag function.
-function submit_by_tag() {
-var name = document.getElementById("name").value;
-var email = document.getElementById("email").value;
-if (validation()) // Calling validation function
-{
-var x = document.getElementsByTagName("form");
-x[0].submit(); //form submission
-alert(" Name : " + name + " \n Email : " + email + " \n Form Tag : <form>\n\n Form Submitted Successfully......");
-}
-}
 
-// Name and Email validation Function.
-function validation() {
-var name = document.getElementById("name").value;
-var email = document.getElementById("email").value;
-var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-if (name === '' || email === '') {
-alert("Please fill all fields...!!!!!!");
-return false;
-} else if (!(email).match(emailReg)) {
-alert("Invalid Email...!!!!!!");
-return false;
-} else {
-return true;
-}
-}
- 
+// The first thing to do is to check if the user is logged in!
+
+loadComments();

@@ -44,7 +44,13 @@ app.get('/submit-name',function(req,res){
     names.push(name);
     res.send(JSON.stringify(names));
 });
-
+var names=[];
+app.get('/article-one/submit-name',function(req,res){
+    
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
 app.get('/register', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'register.html'));
 

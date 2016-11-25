@@ -81,8 +81,8 @@ app.get('/counter',function(req,res){
     res.send(counter.toString());
 }); 
 
-app.get('/login.js', function (req, res) {
-  res.sendFile(path.join(__dirname,  'login.js'));
+app.get('/ui/article.js', function (req, res) {
+  res.sendFile(path.join(__dirname,'ui',  'article.js'));
 });
 
 app.get('/ui/main.js', function (req, res) {

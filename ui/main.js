@@ -161,7 +161,7 @@ return false;
 }  
 else  
 {  
-alert('login successful');  
+alert('user registered successfully');  
 window.location.reload()  
 return true;  
 }  

@@ -169,7 +169,7 @@ return true;
 
 //submit name
 var nameInput = document.getElementById('name');
-var name = varInput.value;
+var name = nameInput.value;
 var submit = document.getElementById('submit_btn');
 submit.onclick = function () {
     var names = ['name1' , 'name2','name3']    ;

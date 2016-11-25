@@ -14,13 +14,6 @@ var config = {
 
 var app = express();
 app.use(morgan('combined'));
-var names=[];
-app.get('/submit-name/:name',function(req,res){
-    
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
 
 var pool = new Pool(config);
 
@@ -44,6 +37,14 @@ app.get('/', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 
 });
+var names=[];
+app.get('/submit-name/:name',function(req,res){
+    
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
+
 app.get('/register', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'register.html'));
 

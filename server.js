@@ -47,26 +47,9 @@ app.get('/submit-name',function(req,res){
 
 
 
-app.get('/article-one/submit-name',function(req,res){
-    
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
 
-app.get('/article-two/submit-name',function(req,res){
-    
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
 
-app.get('/article-three/submit-name',function(req,res){
-    
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
+
 app.get('/register', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'register.html'));
 
@@ -75,13 +58,34 @@ app.get('/article-one', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
 
 });
+app.get('/article-one/submit-name',function(req,res){
+    
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
+
 app.get('/article-two', function (req, res) {
    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
 
 });
+app.get('/article-two/submit-name',function(req,res){
+    
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
+
 app.get('/article-three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
 
+});
+
+app.get('/article-three/submit-name',function(req,res){
+    
+    var name = req.query.name;
+    names.push(name);
+    res.send(JSON.stringify(names));
 });
 app.get('/ui/git.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'git.png'));

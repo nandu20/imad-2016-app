@@ -44,22 +44,10 @@ app.get('/submit-name',function(req,res){
     names.push(name);
     res.send(JSON.stringify(names));
 });
+
+
 var names=[];
-//app.get('/article-one/submit-name',function(req,res){
-    
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
-var names=[];
-app.get('/article-two/submit-name',function(req,res){
-    
-    var name = req.query.name;
-    names.push(name);
-    res.send(JSON.stringify(names));
-});
-var names=[];
-app.get('/article-three/submit-name',function(req,res){
+app.get('/article-one/submit-name',function(req,res){
     
     var name = req.query.name;
     names.push(name);

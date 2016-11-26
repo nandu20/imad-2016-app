@@ -21,7 +21,7 @@ submit.onclick = function () {
 var name = nameInput.value;
     request.open('GET','http://nandu20.imad.hasura-app.io/article-one/submit-name?name='+name,true);
      request.open('GET','http://nandu20.imad.hasura-app.io/article-two/submit-name?name='+name,true);
-      request.open('GET','http://nandu20.imad.hasura-app.io/article-three/submit-name?name='+name,true);
+      request.open('GET','http://nandu20.imad.hasura-app.io/article-two/submit-name?name='+name,true);
     request.send(null);
     
     
